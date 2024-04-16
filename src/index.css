@@ -1,3 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  background-color: #fff;
+  line-height: 1.5;
+  color: #fff;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: -10;
+}
+
+.background img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.fit {
+  height: auto !important;
+}
+
+.oswald {
+  font-family: "Oswald", sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+.card {
+  max-width: 400px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.65);
+  overflow: hidden;
+  gap: 8px;
+}
