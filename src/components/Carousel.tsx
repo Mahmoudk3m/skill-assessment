@@ -1,37 +1,70 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import Slider from "react-slick";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
+import { Pagination, Navigation } from "swiper/modules";
+import Mountain1 from "../assets/Mountain1.png";
+import Mountain2 from "../assets/Mountain2.png";
 export default function Carousel() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
-
+  const images = [
+    Mountain1,
+    Mountain2,
+    Mountain1,
+    Mountain2,
+    Mountain1,
+    Mountain2,
+    Mountain1,
+    Mountain2,
+    Mountain1,
+    Mountain2,
+    Mountain1,
+    Mountain2
+  ];
   return (
-    <Slider {...settings}>
+    <Swiper
+      pagination={{
+        type: "bullets",
+        clickable: true
+      }}
+      modules={[Pagination, Navigation]}
+      loop={true}
+      spaceBetween={50}
+      slidesPerView={3}
+      breakpoints={{
+        0: {
+          slidesPerView: 1,
+          spaceBetween: 20
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 40
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 50
+        }
+      }}
+    >
       <div>
-        <h3>1</h3>
+        {images.map((image, index) => (
+          <SwiperSlide key={index}>
+            <img
+              src={image}
+              alt={`Slide ${index}`}
+              style={{
+                display: "block",
+                objectFit: "cover",
+                height: "100%",
+                width: "100%",
+                minHeight: 200,
+                maxHeight: 300
+              }}
+            />
+          </SwiperSlide>
+        ))}
       </div>
-      <div>
-        <h3>2</h3>
-      </div>
-      <div>
-        <h3>3</h3>
-      </div>
-      <div>
-        <h3>4</h3>
-      </div>
-      <div>
-        <h3>5</h3>
-      </div>
-      <div>
-        <h3>6</h3>
-      </div>
-    </Slider>
+    </Swiper>
   );
 }
